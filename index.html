@@ -1,0 +1,2800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Erb - Actor, Director, Playwright | Six Decades of Theatrical Excellence</title>
+    <meta name="description" content="Professional website of Tom Erb - actor, director, and playwright. Explore original plays available for licensing, Newport Rhode Island arts legacy, and six decades of theatrical excellence.">
+    <meta name="keywords" content="Tom Erb playwright, New Play Exchange, Newport Rhode Island theater, community theater development, original plays licensing, actor director producer">
+    <link rel="canonical" href="https://www.tomerb.com">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3498db 100%);
+            background-attachment: fixed;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #2c3e50;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-background.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.3s both;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.6s both;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-tertiary {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        /* Professional Headshot */
+        .headshot-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .professional-headshot {
+            width: 300px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+        }
+
+        .headshot-info {
+            flex: 1;
+        }
+
+        .headshot-info h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .vital-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .stat-value {
+            color: #34495e;
+            margin-top: 0.5rem;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resume-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-category h4 {
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .resume-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .resume-company {
+            color: #3498db;
+            font-style: italic;
+        }
+
+        .resume-year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 0 5px rgba(30, 60, 114, 0.3);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -12px;
+        }
+
+        .timeline-year {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .timeline-description {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Play Catalog */
+        .catalog-controls {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 3px solid #ecf0f1;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 2px solid transparent;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            color: white;
+        }
+
+        .filter-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .play-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .play-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .play-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60, #3498db, #9b59b6);
+        }
+
+        .play-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            border-color: #3498db;
+        }
+
+        .play-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .play-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .play-tag {
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .play-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .play-warning {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .play-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .play-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .play-button.primary {
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            color: white;
+        }
+
+        .play-button.secondary {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .play-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* YouTube Video Section */
+        .youtube-section {
+            margin-top: 4rem;
+        }
+
+        .youtube-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .youtube-channel {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-channel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .youtube-icon {
+            font-size: 3rem;
+            color: #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        .channel-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .channel-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .youtube-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-button:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 5rem;
+            color: #3498db;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-role {
+            color: #3498db;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .contact-info {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #1e3c72;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3c72, #3498db);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .headshot-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 80px);
+                left: 60px !important;
+            }
+
+            .timeline-item::before {
+                left: -42px !important;
+            }
+
+            .play-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+
+            .catalog-controls {
+                flex-direction: column;
+            }
+
+            .filter-tabs {
+                justify-content: center;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h2>Loading Tom Erb's Portfolio</h2>
+            <p>Six decades of theatrical excellence...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Tom Erb</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#timeline">Career</a></li>
+                <li><a href="#plays">Plays</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%23667eea%22 width=%221200%22 height=%22800%22/><text x=%22600%22 y=%22400%22 font-family=%22serif%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22>🎭 THEATER 🎬</text></svg>')"></div>
+        <div class="hero-content">
+            <h1>Tom Erb</h1>
+            <p class="hero-subtitle">Actor • Director • Playwright • Producer</p>
+            <p class="hero-tagline">"Six Decades of Theatrical Excellence"</p>
+            <div class="cta-buttons">
+                <a href="#plays" class="cta-button cta-primary">Explore Plays</a>
+                <a href="#videos" class="cta-button cta-secondary">Watch Videos</a>
+                <a href="#contact" class="cta-button cta-tertiary">Contact for Licensing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>About Tom Erb</h2>
+                
+                <div class="headshot-section">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect fill='%23ecf0f1' width='300' height='400'/><text x='150' y='200' font-family='serif' font-size='24' fill='%2334495e' text-anchor='middle' dy='.3em'>Professional Headshot</text></svg>" alt="Tom Erb Professional Headshot" class="professional-headshot">
+                    <div class="headshot-info">
+                        <h3>Professional Actor, Director, and Playwright</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: #2c3e50;">
+                            Tom Erb's saga in the performing arts is a rich tapestry woven with the threads of an actor, director, producer, and now, playwright. His journey began in the vibrant early 1960s when he first stepped into the spotlight, transitioning through directing in the 1970s with his debut "A Connecticut Yankee in King Arthur's Court," and evolving into a comprehensive theater professional.
+                        </p>
+                        <div class="vital-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Years Active</span>
+                                <span class="stat-value">1960s - Present</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Specialties</span>
+                                <span class="stat-value">Actor, Director, Playwright</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Location</span>
+                                <span class="stat-value">Venice, Florida</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Legacy Project</span>
+                                <span class="stat-value">Newport Arts Transformation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        For eight transformative years in Newport, Rhode Island, Tom worked tirelessly to turn a town focused on sailing, food, and tourism into a place with a thriving art scene. He organized staged readings, performances, radio plays, and art shows that brought much-needed creative substance to the community. Through his own grit and perseverance, he created an original Newport-based TV series, showcasing his versatility across multiple media.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        Tom's contributions extended beyond the limelight as he dedicated himself to mentoring emerging talents, thereby nurturing the growth of the arts community. His educational background is as extensive as his professional experience, having worked across theater, film, radio, and television production.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Now, as an accomplished playwright, Tom is poised to distill his wealth of experience into stories he has long yearned to tell. Drawing from the well of his acting and directing experiences, he crafts plays that reflect the depth and breadth of his artistic journey. This new venture represents not just a continuation of his career but a merger of his life's work, promising to deliver narratives that resonate with authenticity and passion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Professional Resume</h2>
+                <div class="resume-section">
+                    <div class="resume-category">
+                        <h4>🎭 Acting Credits</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">Stage Actor</div>
+                            <div class="resume-company">Various Regional Theaters</div>
+                            <div class="resume-year">1960s - 1970s</div>
+                            <p>Began professional acting career in the vibrant early 1960s, performing in regional theater productions and developing foundational skills that would inform later work as director and playwright.</p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-title">Character Development Specialist</div>
+                            <div class="resume-company">Independent Productions</div>
+                            <div class="resume-year">1970s - Present</div>
+                            <p>Continuing acting work in various productions, with particular focus on character development and ensemble work.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-category">
+                        <h4>🎬 Directing Portfolio</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">A Connecticut Yankee in King Arthur's Court</div>
+                            <div class="resume-company">Regional Theater - Directorial Debut</div>
+                            <div class="resume-year">1970s</div>
+                            <p>Marked transition from acting to directing, bringing meticulous eye for detail and distinctive creative vision to the stage.</p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-title">Newport Community Productions</div>
+                            <div class="resume-company">Various Newport, RI Venues</div>
+                            <div class="resume-year">2015-2023</div>
+                            <p>Directed numerous staged readings, performances, and community theater productions as part of Newport arts renaissance.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-category">
+                        <h4>📺 Production & Media</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">Creator & Producer</div>
+                            <div class="resume-company">Original Newport-based TV Series</div>
+                            <div class="resume-year">2021</div>
+                            <p>Created and produced original television series showcasing Newport community and local stories through own grit and perseverance.</p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-title">Radio Play Producer</div>
+                            <div class="resume-company">Newport Community Radio</div>
+                            <div class="resume-year">2018-2020</div>
+                            <p>Organized and produced radio plays and audio content as part of community arts development initiatives.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-category">
+                        <h4>✍️ Playwriting Credits</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">Published Playwright</div>
+                            <div class="resume-company">New Play Exchange</div>
+                            <div class="resume-year">2000 - Present</div>
+                            <p>Author of multiple original plays including full-length dramas, comedies, historical works, one-acts, ten-minute plays, and monologues. Works available for licensing through New Play Exchange.</p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-title">Musical Theater Collaborator</div>
+                            <div class="resume-company">Partnership with Composer Ellyn Fleming</div>
+                            <div class="resume-year">2024</div>
+                            <p>Lyricist and co-creator for musical theater works, combining original music with lyrics to bring musical stories to life.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-category">
+                        <h4>🌟 Community Leadership</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">Arts Community Developer</div>
+                            <div class="resume-company">Newport, Rhode Island</div>
+                            <div class="resume-year">2015-2023</div>
+                            <p>Led eight-year transformation of Newport from tourism-focused city to thriving arts destination through organization of staged readings, performances, radio plays, and art shows.</p>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-title">Mentor & Educator</div>
+                            <div class="resume-company">Emerging Artists Program</div>
+                            <div class="resume-year">1980s - Present</div>
+                            <p>Dedicated to mentoring emerging talents and nurturing growth of arts community through workshops, consultations, and collaborative projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-category">
+                        <h4>🏆 Professional Services</h4>
+                        <div class="resume-item">
+                            <div class="resume-title">Available Services</div>
+                            <div class="resume-company">Professional Consultation</div>
+                            <div class="resume-year">Current</div>
+                            <p><strong>Playwriting Consultation:</strong> Script development and revision<br>
+                            <strong>Directing Services:</strong> Professional production direction<br>
+                            <strong>Community Arts Development:</strong> Arts program development<br>
+                            <strong>Speaking Engagements:</strong> Workshops and masterclasses<br>
+                            <strong>Mentorship:</strong> One-on-one artistic coaching</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Career Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">1960s</div>
+                        <div class="timeline-title">Acting Career Begins</div>
+                        <div class="timeline-description">Tom's journey in the performing arts begins as he steps into the spotlight, developing his craft as an actor in the vibrant theater scene of the early 1960s. This foundational period established his deep understanding of character development and stage presence.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">1970s</div>
+                        <div class="timeline-title">Transition to Directing</div>
+                        <div class="timeline-description">As new cultural tides emerged, Tom transitioned to directing, bringing meticulous attention to detail and distinctive creative vision to the stage. His directorial debut, "A Connecticut Yankee in King Arthur's Court," marked the beginning of his distinguished directing career.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">1980s-1990s</div>
+                        <div class="timeline-title">Mentorship & Community Building</div>
+                        <div class="timeline-description">Tom dedicated himself to mentoring emerging talents and nurturing the growth of the arts community, establishing himself as a respected figure in theatrical education and development while continuing his directing work.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">2000</div>
+                        <div class="timeline-title">Playwriting Journey Begins</div>
+                        <div class="timeline-description">Tom begins his journey as a playwright, drawing from decades of experience as actor and director to craft original works that reflect his deep understanding of theatrical storytelling and character development.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">2015-2023</div>
+                        <div class="timeline-title">Newport Arts Renaissance</div>
+                        <div class="timeline-description">Eight transformative years in Newport, Rhode Island, where Tom worked tirelessly to turn a tourism-focused town into a thriving arts destination. He organized staged readings, performances, radio plays, and art shows that brought creative substance to the community.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-title">TV Series Creator</div>
+                        <div class="timeline-description">Through his own grit and perseverance, Tom created an original Newport-based TV series, showcasing his versatility and expanding his creative reach into television production while documenting the local community's stories.</div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-year">2024-Present</div>
+                        <div class="timeline-title">Accomplished Playwright</div>
+                        <div class="timeline-description">Tom continues his creative journey as an accomplished playwright with multiple works available on New Play Exchange. His plays reflect the depth and breadth of his artistic journey across six decades, featuring collaborations with composer Ellyn Fleming and covering diverse themes from personal drama to historical works.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plays Catalog -->
+    <section id="plays" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Complete Play Catalog</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                    Explore Tom Erb's complete collection of original works available for licensing through New Play Exchange
+                </p>
+                
+                <div class="catalog-controls">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search plays by title, genre, or theme..." id="playSearch">
+                        <button class="search-button" onclick="searchPlays()">Search</button>
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" onclick="filterPlays('all')">All Works</button>
+                        <button class="filter-tab" onclick="filterPlays('full-length')">Full-Length</button>
+                        <button class="filter-tab" onclick="filterPlays('one-act')">One-Act</button>
+                        <button class="filter-tab" onclick="filterPlays('ten-minute')">Ten-Minute</button>
+                        <button class="filter-tab" onclick="filterPlays('monologue')">Monologues</button>
+                        <button class="filter-tab" onclick="filterPlays('musical')">Musical</button>
+                    </div>
+                </div>
+                
+                <div class="play-grid" id="playGrid">
+                    <!-- Plays will be populated by JavaScript in NPX order -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section id="videos" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Video Portfolio</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                    Explore Tom Erb's video content across multiple YouTube channels
+                </p>
+                
+                <div class="youtube-channels">
+                    <div class="youtube-channel">
+                        <div class="youtube-icon">📺</div>
+                        <div class="channel-name">Newport City Limits</div>
+                        <div class="channel-description">
+                            Showcasing the cultural and artistic life of Newport, Rhode Island through original video content documenting the community's transformation into a thriving arts destination.
+                        </div>
+                        <a href="https://www.youtube.com/@NewportCityLimits" target="_blank" class="youtube-button">Visit Channel</a>
+                    </div>
+                    
+                    <div class="youtube-channel">
+                        <div class="youtube-icon">🎭</div>
+                        <div class="channel-name">Tom Erb Personal</div>
+                        <div class="channel-description">
+                            Personal creative content, behind-the-scenes footage, and insights into the artistic process spanning Tom's six-decade career in theater and media.
+                        </div>
+                        <a href="https://www.youtube.com/@tomerb8498" target="_blank" class="youtube-button">Visit Channel</a>
+                    </div>
+                    
+                    <div class="youtube-channel">
+                        <div class="youtube-icon">🏙️</div>
+                        <div class="channel-name">Newport RI Series</div>
+                        <div class="channel-description">
+                            The original Newport-based TV series created through Tom's grit and perseverance, featuring local stories and the community's rich cultural heritage.
+                        </div>
+                        <a href="https://www.youtube.com/@NewportRISeries" target="_blank" class="youtube-button">Visit Channel</a>
+                    </div>
+                </div>
+                
+                <div class="youtube-section">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Featured Content</h3>
+                    <p style="text-align: center; font-size: 1rem; color: #666; line-height: 1.7;">
+                        Tom's video portfolio includes performance clips, interviews, behind-the-scenes footage from Newport community events, 
+                        testimonial videos from collaborators, creative process documentation, and recordings from his original TV series. 
+                        These channels showcase both his individual artistic journey and his transformative work in community arts development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>What Collaborators Say</h2>
+                <div class="testimonials">
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            I had the pleasure of doing a music score for an amazing play script written by Tom. He made every moment of my journey through this task thrilling. He is talented, kind, supportive, patient, enthusiastic, respectful, very hard working and full of gratitude. I honestly could not have asked for a better person to team up with.
+                        </div>
+                        <div class="testimonial-author">Ellyn Fleming</div>
+                        <div class="testimonial-role">Composer & Musical Collaborator</div>
+                    </div>
+                    
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            Tom Erb is a human dynamo who single-handedly makes artistic endeavors (theater, film, radio, art shows) happen! I knew him for 8 years in Newport, Rhode Island and in that time he did the Herculean task of transforming a town focused on sailing, food and drink, and tourism into a place that had a thriving art scene.
+                        </div>
+                        <div class="testimonial-author">Newport Arts Community Member</div>
+                        <div class="testimonial-role">Long-time Collaborator</div>
+                    </div>
+                    
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            An emotional work about loss and, at the same time, the fulfillment of a promise. The authenticity of the emotions gives it a transcendent beauty that goes beyond the language, the structure, and the composition of a play.
+                        </div>
+                        <div class="testimonial-author">Georgia Xanthopoulou</div>
+                        <div class="testimonial-role">Playwright & New Play Exchange Reviewer</div>
+                    </div>
+                    
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            Tom's extensive experience as actor and technician gives him insight into all aspects of production and provides for good working relationships with everyone involved. He creates a fun, safe environment where actors and production team can explore the possibilities of the script.
+                        </div>
+                        <div class="testimonial-author">Theater Professional</div>
+                        <div class="testimonial-role">Director & Producer</div>
+                    </div>
+                    
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            He and I did staged readings and performances, radio plays, and art shows that brought some much-needed creative substance to Newport. I also watched Tom - through his own grit and perseverance - create an original Newport based TV series. He is a renaissance man who is also an energetic asset to all whom he comes in contact.
+                        </div>
+                        <div class="testimonial-author">Newport Creative Partner</div>
+                        <div class="testimonial-role">Arts Community Leader</div>
+                    </div>
+                    
+                    <div class="testimonial fade-in">
+                        <div class="testimonial-text">
+                            What is most exciting about working with Tom is that he understands theater as a collaborative art. He truly enjoys working closely with actors, writers, musicians, and production staff. His decades of experience provide the structure, vision, and organizational discipline necessary to create cohesive works of theater.
+                        </div>
+                        <div class="testimonial-author">Creative Team Member</div>
+                        <div class="testimonial-role">Actor & Production Staff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Connect & Collaborate</h2>
+                <div class="contact-grid">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">🎭</div>
+                        <div class="contact-title">Play Licensing</div>
+                        <div class="contact-info">
+                            Interested in producing one of Tom's plays?<br><br>
+                            <a href="https://newplayexchange.org/users/16892/tom-erb" target="_blank">Visit New Play Exchange Profile</a><br><br>
+                            Contact directly for licensing information, production rights, and royalty details.
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">🤝</div>
+                        <div class="contact-title">Creative Collaborations</div>
+                        <div class="contact-info">
+                            Looking for a creative partner with six decades of experience?<br><br>
+                            Available for collaborations in:<br>
+                            • Theater productions<br>
+                            • Film and television<br>
+                            • Radio and audio projects<br>
+                            • Community arts development
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">🎓</div>
+                        <div class="contact-title">Speaking & Workshops</div>
+                        <div class="contact-info">
+                            Book Tom for:<br><br>
+                            • Playwriting workshops<br>
+                            • Directing masterclasses<br>
+                            • Community arts development seminars<br>
+                            • Theater history and technique<br>
+                            • Arts leadership and mentorship
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-title">Professional Services</div>
+                        <div class="contact-info">
+                            <strong>Current Location:</strong> Venice, Florida<br><br>
+                            <strong>Services Available:</strong><br>
+                            • Playwriting consultation<br>
+                            • Directing services<br>
+                            • Script development<br>
+                            • Community arts consulting<br>
+                            • Production mentorship
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-title">Connect Online</div>
+                        <div class="contact-info">
+                            <strong>Professional Links:</strong><br><br>
+                            <a href="https://newplayexchange.org/users/16892/tom-erb" target="_blank">New Play Exchange</a><br>
+                            <a href="https://www.facebook.com/erbinparadise/" target="_blank">Facebook Profile</a><br>
+                            <a href="https://www.tomcerb.weebly.com" target="_blank">Portfolio Website</a><br><br>
+                            <strong>YouTube Channels:</strong><br>
+                            <a href="https://www.youtube.com/@NewportCityLimits" target="_blank">Newport City Limits</a><br>
+                            <a href="https://www.youtube.com/@tomerb8498" target="_blank">Tom Erb Personal</a><br>
+                            <a href="https://www.youtube.com/@NewportRISeries" target="_blank">Newport RI Series</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-title">Direct Contact</div>
+                        <div class="contact-info">
+                            For licensing inquiries, collaboration requests, booking information, or general professional inquiries, please reach out through:<br><br>
+                            • New Play Exchange messaging system<br>
+                            • Facebook professional page<br>
+                            • Portfolio website contact form<br><br>
+                            <em>All inquiries receive prompt professional response</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#resume">Resume</a>
+                <a href="#timeline">Career</a>
+                <a href="#plays">Plays</a>
+                <a href="#videos">Videos</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://newplayexchange.org/users/16892/tom-erb" target="_blank" class="social-link" title="New Play Exchange">📚</a>
+                <a href="https://www.facebook.com/erbinparadise/" target="_blank" class="social-link" title="Facebook">📘</a>
+                <a href="https://www.tomcerb.weebly.com" target="_blank" class="social-link" title="Portfolio">🌐</a>
+                <a href="https://www.youtube.com/@NewportCityLimits" target="_blank" class="social-link" title="YouTube">📺</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tom Erb. All rights reserved.</p>
+                <p>Professional theatrical portfolio spanning six decades of excellence • Actor • Director • Playwright • Producer</p>
+                <p>For licensing inquiries and professional collaborations, please contact through New Play Exchange or social media profiles.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Complete play catalog data from New Play Exchange (comprehensive listing)
+        const plays = [
+            // FULL-LENGTH PLAYS
+            {
+                title: "Standing Room Only",
+                type: "full-length",
+                genre: "comedy",
+                year: "2025",
+                cast: "8",
+                description: "When the Thornfield Community Playhouse's pretentious director Bernard Wellington announces he's discovered a 'lost Shakespeare manuscript,' it sets the stage for theatrical chaos. With opening night just days away, the historic theater is falling apart, failed safety inspections threaten to shut down the production, and the dysfunctional theater company is imploding from within.",
+                themes: ["theater", "comedy", "chaos", "Shakespeare", "community theater"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Inheritance Game",
+                type: "full-length", 
+                genre: "comedy",
+                year: "2025",
+                cast: "6",
+                description: "Wealthy eccentric Eleanor Blackwood stages her death to test her two nephews - anxious English teacher Thomas and pompous financial advisor Richard - to determine who deserves her substantial fortune. The nephews arrive at Eleanor's sprawling New England mansion, where sardonic housekeeper Greta informs them of their aunt's 'passing.'",
+                themes: ["inheritance", "family", "deception", "comedy", "testing"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Circle of Healing",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "5-7",
+                description: "Follows five wounded souls whose lives intersect in a community center support group where healing begins in unexpected ways. The story unfolds within the simple geometry of a circle of chairs, where perfect strangers gradually become imperfect companions on their recovery journeys.",
+                themes: ["healing", "support group", "recovery", "community", "personal struggle"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Beneath The Allegheny Sky",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "9-11",
+                description: "Set in spring 1894 in industrial town of Blacks Run, Pennsylvania. A poignant exploration of love, family, and the human cost of progress centering around the Remaley sisters—Bella, Sadie, and Nellie—intimately connected to the dangerous Acme Powder Works.",
+                themes: ["family", "industrial", "1890s", "tragedy", "Pennsylvania"],
+                availability: "Available on New Play Exchange",
+                period: "Spring 1894"
+            },
+            {
+                title: "True Unto Death",
+                type: "full-length",
+                genre: "tragedy",
+                year: "2024",
+                cast: "7M/5F",
+                description: "In spring 1894, amidst the 'Mauve Decade,' 'Gay Nineties,' and 'Gilded Age,' a significant chapter unfolds in Springdale, western Pennsylvania. The Remaley family faces a pivotal moment with John Randolph Remaley and his brother George owning vast land stretches.",
+                themes: ["family tragedy", "1890s", "Pennsylvania", "actual events", "Gilded Age"],
+                availability: "Available on New Play Exchange",
+                recommendation: "3 recommendations",
+                warning: "Based on actual tragic events"
+            },
+            {
+                title: "A Rainy Night in Hollywood (Rewrite)",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Set in 1947. Centers on unexpected encounter between Rita Hayworth, struggling with fame pressures, and George Thompson, a studio driver and WWI & WWII veteran. On a rain-soaked evening, these souls from different worlds create tension and anticipation as Hollywood's glamorous veneer peels away.",
+                themes: ["Hollywood", "fame", "WWII veteran", "actual events", "1947"],
+                availability: "Available on New Play Exchange",
+                historical: "Based on actual events in 1940s Hollywood"
+            },
+            {
+                title: "A Rainy Night in Hollywood (Original)",
+                type: "full-length",
+                genre: "drama", 
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "On a stormy night in 1943, Hollywood star Rita Hayworth, stranded in the rain, awaits a studio driver. George Thompson, a WWII veteran turned driver, arrives. What begins as routine ride home becomes pivotal moment as Rita shares frustrations with film industry.",
+                themes: ["Hollywood", "WWII", "1943", "actual events", "film industry"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Margin of Error",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "8",
+                description: "Thrusts us into crucible of presidential campaign, where Vice President Chen-Goldstein battles to become America's first biracial female president. She grapples with personal doubts and strain on marriage to Dr. Joshua Goldstein, who secretly yearns for life away from spotlight.",
+                themes: ["politics", "campaign", "diversity", "presidency", "marriage"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Courthouse",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "15-27",
+                description: "Contemporary drama exploring moral complexity of justice, technology, and individual conscience through interconnected trials spanning three generations. Weaves together three cases in same military courthouse: 1945 army doctor trial, 1971 POW camp case, and 2024 trial.",
+                themes: ["justice", "military", "technology", "three generations", "moral complexity"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Legacy",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "6",
+                description: "While clearing out late father's garage in Manhattan, three Goldman siblings discover shocking truth: their painfully unfunny accountant father Marvin was once a stand-up comedian. According to old Village Voice article, he performed legendary routine in 1966 predicting social media to reality TV.",
+                themes: ["family secrets", "comedy", "1966", "Manhattan", "discovery"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Four Couples, One Table",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "8",
+                description: "Contemporary comedy about friendship, change, and families we choose, set against New Year's Eve party in Florida manufactured home community. Three retired couples called 'The Rounders' face disruption when Mary Taybor attempts to integrate new friends.",
+                themes: ["friendship", "retirement", "Florida", "New Year's Eve", "change"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Alexa, Play Dystopia",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "8-10",
+                description: "Digital Age Revival of The Thurber Carnival. In era where Alexa might be our closest confidant, reimagines James Thurber's satirical genius for world obsessed with likes, algorithms, and virtual reality. Fast-paced theatrical revue featuring twelve interconnected skits.",
+                themes: ["digital age", "Thurber", "satire", "technology", "virtual reality"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Stand-Up Dreams",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "10",
+                description: "Two-act play following ten diverse students in stand-up comedy class taught by veteran comedian Freddie Mills, who believes honest comedy can heal personal trauma. Story unfolds over eight weeks in Providence, Rhode Island, as unlikely comedians prepare for graduation performance.",
+                themes: ["stand-up comedy", "healing", "Providence", "trauma", "diverse students"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Sunset Swing",
+                type: "full-length",
+                genre: "romantic comedy",
+                year: "2024",
+                cast: "6",
+                description: "Frank and Claire Jones are sweet, predictable retired couple leading sedate suburban lives. That changes when new neighbors Mike and Karen Phillips move in. Upon investigating missing petunias, Joneses accidentally discover Phillips have converted home into elderly swingers club called 'The Trapeze Club.'",
+                themes: ["retirement", "swingers", "suburbia", "discovery", "relationships"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Drying Ink",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "3",
+                description: "Thought-provoking play exploring consequences of ambition and delicate balance between career and personal life. Centers on Alexandra Chen, driven 30-year-old executive who begins receiving mysterious letters from her future self. Career soars following advice but relationship with husband James becomes strained.",
+                themes: ["ambition", "future self", "career", "marriage", "consequences"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Wedding Secrets",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "8 (4M/4F)",
+                description: "Revolves around Laura and Robert's highly anticipated wedding weekend. As they prepare to tie knot in familiar backyard where Laura spent childhood, Engle family eagerly awaits joyous celebration. Laura's parents Linda and Richard take pride in hosting this momentous occasion.",
+                themes: ["wedding", "family secrets", "backyard", "celebration", "secrets"],
+                availability: "Available on New Play Exchange",
+                recommendation: "5 recommendations"
+            },
+            {
+                title: "DO IT YOURSELF (DIY) The Musical",
+                type: "musical",
+                genre: "musical comedy",
+                year: "2024",
+                cast: "10 (5M/5F)",
+                description: "In Anytown, USA, two rival home improvement stores, Orange Box and Blue Cube, compete fiercely. Employees with unique personalities engage in antics to outdo each other in sales, service, and sabotage. Throughout typical week, staff handle demanding customers and tricky contractors.",
+                themes: ["home improvement", "competition", "workplace", "retail", "rivalry"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Hallam and Douglass The Musical",
+                type: "musical",
+                genre: "historical musical",
+                year: "2024",
+                cast: "27-34 (20M/7F)",
+                description: "Set against backdrop of bustling American colonies, transports us to time brimming with hope, resilience, and burning desire for live entertainment. The formative years of thirteen colonies, where pursuit of religious freedom had taken root and colonists found solace in familiar wares.",
+                themes: ["colonial America", "1752", "first theater", "religious freedom", "entertainment"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Art Therapy",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "3F",
+                description: "Relationships form bedrock of our deepest hopes, dreams, and sources of happiness. Resonates profoundly with Virginia, Carolina, and Florence, three friends whose bond has been inseparable since elementary school. Together, they've navigated life's myriad ups and downs.",
+                themes: ["female friendship", "lifelong bonds", "elementary school", "support", "relationships"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "Voices of a Revolution",
+                type: "full-length",
+                genre: "historical drama",
+                year: "2024",
+                cast: "6-10 (3M/4F)",
+                description: "In landmark courtroom drama, US government has brought federal case against Board of Lady Managers, influential women's committee that oversaw 1893 Chicago World's Fair. Prosecution alleges under Bertha Palmer's leadership, Board engaged in sedition by promoting 'radical feminist' viewpoints.",
+                themes: ["1890s", "women's rights", "Chicago World's Fair", "courtroom", "feminism"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "All Aboard",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "2",
+                description: "Explores unexpected bond between Gus, elderly man, and Sam, young transgender individual. Paths cross when Sam accidentally hits Gus while performing skateboard tricks, leading to Sam being assigned community service hours with Gus. Delves into acceptance, understanding, and personal growth.",
+                themes: ["transgender", "intergenerational", "acceptance", "community service", "understanding"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Last Gambit",
+                type: "full-length",
+                genre: "mystery thriller",
+                year: "2024",
+                cast: "7-10 (4M/3F)",
+                description: "Thought-provoking play following lives of ordinary people from small town invited to participate in mysterious, life-altering game called 'The Gambit.' Central character John Prescott, middle-aged man stuck in monotony, embarks with wife Emily and teenage son Liam on journey of self-discovery.",
+                themes: ["mystery", "small town", "self-discovery", "family", "life-altering game"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Bedlam at Bethlehem",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "16 (8M/7F)",
+                description: "At Shady Acres Retirement Home, older people gear up for annual Christmas Eve Nativity play, side-splitting and unconventional retelling of classic story. Ethel, self-appointed director and overzealous Virgin Mary, leads chaotic cast of colorful characters bringing unique mayhem to production.",
+                themes: ["Christmas", "retirement home", "nativity play", "elderly", "comedy"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "Watch Your Pronouns (Full-Length)",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "5 (4M/1F)",
+                description: "Poignant exploration of acceptance, understanding, and evolving nature of familial love in face of gender identity issues. Set entirely around park bench, story unfolds through conversations between Cliff, George, and Sarah. George struggles with grandchild Austin's transition.",
+                themes: ["LGBTQ", "grandparents", "gender identity", "acceptance", "family"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "A Full Moon Pact",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "7-12 (2M/1F)",
+                description: "In late 1940s, two strangers' paths converge on fog-shrouded ferry crossing mysterious sea. Eleanor, young ambitious woman dreaming of acting, and Thomas, soldier grappling with war aftermath, find solace in each other amidst journey's uncertainty. Make pact to pursue dreams and reunite.",
+                themes: ["1940s", "ferry", "dreams", "post-war", "pact"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Andersonville",
+                type: "full-length",
+                genre: "historical drama",
+                year: "2024",
+                cast: "10M",
+                description: "John Ransom documents physical hardships faced by prisoners: starvation, disease, cruel treatment, but highlights unbreakable bonds of friendship that sustained him during dark days. Relationships with fellow captives Billy, Tom, George W. Hendryx, William B. Rowe, and Bullock are central theme.",
+                themes: ["Civil War", "POW", "friendship", "survival", "John Ransom diary"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Whodunit Live",
+                type: "full-length",
+                genre: "mystery",
+                year: "2024",
+                cast: "7-10 (7M/3F)",
+                description: "Interactive murder mystery game show! Wealthy businessman Robert Patterson found stabbed to death in mansion study. Wife Vivian discovered body and summoned authorities. Charming host guides investigation on elaborate mansion set with cast of colorful suspects present around time of murder.",
+                themes: ["murder mystery", "interactive", "mansion", "audience participation", "game show"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Ghost of Ketchum",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "8 (4M/4F)",
+                description: "Explores life and legacy of Ernest Hemingway. Follows Rex Taylor, writer working on book about Hemingway's character development and memorable protagonists. Rex invited by Sarah Matthews, old college girlfriend and curator of Hemingway's work, creating opportunity to explore literary legacy.",
+                themes: ["Ernest Hemingway", "literary", "character development", "legacy", "Ketchum"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Building Paradise",
+                type: "full-length",
+                genre: "historical drama",
+                year: "2024",
+                cast: "16-24 (16M/6F)",
+                description: "Narrative unfolds in early 20th century, weaving through ambitions and challenges faced by Palmer family, particularly focusing on Bertha Honoré Palmer, her innovative spirit, and legacy carried forward by sons Honore and Potter Palmer II. Set against rapidly evolving America.",
+                themes: ["early 1900s", "Bertha Palmer", "Chicago", "Florida", "innovation"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Send in the Clown",
+                type: "full-length",
+                genre: "comedy",
+                year: "2024",
+                cast: "8 (7M/1F)",
+                description: "Takes audiences back to nostalgia of 1960, when 'The Bobo The Clown Show' was beloved children's program. With declining viewership, producers face challenge of securing bigger sponsor, leading to compromises threatening show's creative integrity as pressure mounts to attract younger audience.",
+                themes: ["1960", "children's TV", "Bobo the Clown", "sponsors", "creative integrity"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Lesson",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "8 (7M/1F)",
+                description: "Inspired by actual events. Looks at significant occurrence that unfolded July 2, 1978, in Cotton Hill and Knightsville, South Carolina, just thirty-five miles from Charleston. Event coincided precisely with fourteenth anniversary of Civil Rights Act signing by President Johnson July 2, 1964.",
+                themes: ["1978", "South Carolina", "Civil Rights", "actual events", "prejudice"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "October Curse",
+                type: "full-length",
+                genre: "drama",
+                year: "2024",
+                cast: "6 (10M/1F)",
+                description: "In vibrant Boston 1918, palpable energy filled air outside majestic Fenway Park. At Gate C on Lansdowne Street, young dreamer George Flanagan, known as Mays, yearns for extraordinary opportunity. Just thirteen, fervent hope consumes him as he dreams of baseball greatness.",
+                themes: ["1918", "Boston", "Fenway Park", "Red Sox", "Curse of Bambino"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Threads of Identity",
+                type: "full-length",
+                genre: "historical drama",
+                year: "2024",
+                cast: "3 (1M/2F)",
+                description: "Christopher, young transgender male living in 21st century, is descendant of MacGregor clan, Scottish family with history of rebellion and outlawry. Fascinated by heritage, wants to learn more. After sudden power outage, finds himself back in 17th century seeking ancestor Rob Roy MacGregor.",
+                themes: ["transgender", "Scottish history", "MacGregor clan", "time travel", "Rob Roy"],
+                availability: "Available on New Play Exchange"
+            },
+
+            // ONE-ACT PLAYS
+            {
+                title: "A Rainy Night in Hollywood (One-Act)",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Dramatic play inspired by events set in 1947, during golden age of Hollywood. Follows encounter between Rita Hayworth, famous actress unhappy with career and personal life, and George, studio driver unaware of her identity with secret passion.",
+                themes: ["1947", "Hollywood", "Rita Hayworth", "golden age", "actual events"],
+                availability: "Available on New Play Exchange",
+                recommendation: "22 recommendations",
+                festival: "Texas A&M University-Corpus Christi 40 Minute Play Festival"
+            },
+            {
+                title: "Lucy's Chance Encounter (Rewrite)",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "3",
+                description: "In shimmer of moonlight on Tampa's Riverwalk, where city's pulse meets river's whisper, young woman's destiny hangs in balance. Lucy, rising star in fashion world, finds herself at crossroads where personal freedom clashes with societal responsibility dealing with current social issues.",
+                themes: ["Tampa", "fashion", "moonlight", "social issues", "crossroads"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Lucy's Chance Encounter (Original)",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Immerses audience in world where Lucy, spirited and passionate young woman, holds keys to her destiny. Lucy's future appears dazzling with opportunities, including promising business venture, loyal friends, and adoring boyfriend. However, beneath surface lies solitary flaw threatening to unravel everything.",
+                themes: ["destiny", "COVID-19 vaccine", "business", "relationships", "choices"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Watch Your Pronouns (One-Act)",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "2M",
+                description: "Shows two old friends gathering daily at favorite park sharing stories of their lives. On this particular day, routine takes different turn. Both courageously reveal deepest, darkest, most regrettable secrets, exposing vulnerabilities. One friend, grandfather to young transgender person.",
+                themes: ["LGBTQ", "friendship", "secrets", "grandparents", "transgender"],
+                availability: "Available on New Play Exchange",
+                recommendation: "9 recommendations"
+            },
+            {
+                title: "Reflections of the Soul",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "4 (2M/1F)",
+                description: "Poignant play taking place entirely in bathroom of Ethan, man haunted by past regrets and fears. Through conversations with Mirr, embodiment of his bathroom mirror, and reflections of lost love Anna and estranged friend Mark, Ethan confronts deepest fears and regrets.",
+                themes: ["regret", "bathroom", "mirror", "confrontation", "healing"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "A Soldier Out of Time",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "12M",
+                description: "Sgt. Alex Reyes, modern Marine serving in Iraq when explosion sends him back through time to fight in famous battles that shaped American history. First finds himself at Lexington and Concord 1775 during Revolutionary War, then lands at Omaha Beach.",
+                themes: ["time travel", "American history", "military", "battles", "Marine"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Papa's World Series",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "3M",
+                description: "Captures magic of baseball as backdrop for heartwarming intergenerational tale. Through lens of Tommy's innocent perspective, explores themes of family, hero worship, and timeless bond between grandparent and grandchild. Tommy witnesses triumphs and challenges on baseball diamond.",
+                themes: ["baseball", "1960 World Series", "grandfather", "intergenerational", "family"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Unlikely Love",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "4 (2M/2F)",
+                description: "Enchanting play telling story of Betsy and Mr. Raines, two individuals whose paths cross unexpectedly during Progressive Era of early 20th century. Issues included labor rights, women's suffrage, economic reform, environmental protections, welfare of people with low incomes.",
+                themes: ["Progressive Era", "early 1900s", "labor rights", "women's suffrage", "love"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Last Words",
+                type: "one-act",
+                genre: "drama",
+                year: "2024",
+                cast: "2M",
+                description: "In evocative play inspired by real events, story unfolded July 20, 1973. Two best friends find themselves at culmination of extraordinary senior year in high school. Recently graduated, one celebrates just ten days after 18th birthday following night of revelry in Newport, Rhode Island.",
+                themes: ["1973", "Newport", "friendship", "graduation", "final words"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Laughing Through Life",
+                type: "one-act",
+                genre: "romantic comedy",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Noah insists old friend Natalie take break to watch his set. They chat after Natalie gushing about his rise to fame. When Noah asks about her life, she tells him about stagnant marriage ending. In tender moment, Noah tells Natalie she deserves happiness and asks her on proper date.",
+                themes: ["stand-up comedy", "old friends", "divorce", "second chances", "comedy club"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+
+            // TEN-MINUTE PLAYS
+            {
+                title: "The Interview",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "3",
+                description: "When unemployed Sam interviews at Pinnacle Dynamics with completely fabricated resume, they unknowingly meet Alex, intern impersonating hiring manager. Interview spirals into increasingly absurd lies as each tries to impress other - from quantum blockchain expertise to dolphin-astronaut communication systems.",
+                themes: ["job interview", "lies", "imposters", "absurd", "comedy"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Bench On Main Street",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "3",
+                description: "Weaves together stories of four souls on Christmas Eve and its aftermath. Thomas, mourning wife Margaret, meets Bix, young man who just died in accident. Bix, sent by Margaret's spirit, asks Thomas to help his grieving mother Karen. Month later, Thomas and Karen meet at same bench.",
+                themes: ["Christmas Eve", "grief", "spirits", "helping", "connection"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Complete Ten-Minute Play Festival",
+                type: "ten-minute",
+                genre: "various",
+                year: "2024",
+                cast: "2-10",
+                description: "Meticulously anthology production of ten distinct ten-minute plays. Each piece is self-contained narrative marvel designed to captivate and engage audiences within concise timeframe. Collection ciphers far reaches of theatrical storytelling, with topics ranging from absolute depths of human psyche.",
+                themes: ["anthology", "festival", "variety", "human psyche", "storytelling"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Midnight Waters",
+                type: "five-minute",
+                genre: "historical drama",
+                year: "2024",
+                cast: "2M",
+                description: "Takes place during tumultuous years of WWII. General Douglas MacArthur, disguised as old fisherman, confides in Lieutenant John Bulkeley aboard PT boat—vessel cutting through moonlit waters, carrying their shared burden of leadership and hope for nation's future.",
+                themes: ["WWII", "MacArthur", "PT boat", "leadership", "moonlight"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "American Pie",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Young rocker embarks on transformative musical journey when encountering old rock and roller on park bench. Dee Dee, music lover in 20s, finds herself drawn to familiar tune played by Don, seasoned musician in mid-60s. Curiosity leads to conversation about iconic song.",
+                themes: ["music", "generations", "American Pie song", "park bench", "rock and roll"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Patron Saints",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "4 (2M/2F)",
+                description: "God and Jesus find themselves overwhelmed with multitude of prayers pouring in, prompting them to devise plan to delegate some responsibilities to patron saints. Recognizing need to share divine workload, Jesus and Mary convene important meeting with all patron saints.",
+                themes: ["religious", "God", "Jesus", "patron saints", "divine comedy"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Dreamer",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Whimsical and fantastical play following journey of Alex, struggling writer seeking inspiration for unfinished novel. Frustrated with lack of direction, Alex expresses need for help, which summons his ethereal Muse. Muse takes Alex on adventure through his dreams.",
+                themes: ["writer", "muse", "dreams", "inspiration", "fantasy"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Sketchy",
+                type: "ten-minute",
+                genre: "romantic comedy",
+                year: "2024",
+                cast: "5-7 (4M/3F)",
+                description: "Heartwarming love story unfolding in various stages of characters' lives. Begins with Leo, disheartened artist spending days creating caricatures in park. Feeling stuck in repetitive routine, Leo yearns for excitement and someone who truly understands him.",
+                themes: ["artist", "caricatures", "park", "love story", "understanding"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Fake News",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "9 (4M/5F)",
+                description: "Explores impact of misinformation and importance of critical thinking in today's society. Follows diverse characters grappling with spread of fake news and its consequences. Prompts audiences to reflect on pervasive issue of fake news and potential harm it can cause.",
+                themes: ["misinformation", "critical thinking", "fake news", "society", "consequences"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Shade Tree for Daddy",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "2M",
+                description: "Pivotal moment unfolds as Thomas, accompanied by son George, visits Veteran's Cemetery to introduce him to his true grandfather for first time. Until this point, George has been unaware of truth, believing his grandfather to be Thomas's stepfather.",
+                themes: ["veterans cemetery", "grandfather", "truth", "military", "family"],
+                availability: "Available on New Play Exchange",
+                recommendation: "3 recommendations"
+            },
+            {
+                title: "Baptismal",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "2M",
+                description: "Audience transported to lighthearted scene within Confessional Booth. Troubled soul named Thomas grapples with question weighing on mind—is being baptized more than once considered sin? Thomas perplexed by upbringing, as parents didn't actively engage with church during formative years.",
+                themes: ["baptism", "confession", "religion", "sin", "church"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Colonial Theatre, Part One",
+                type: "ten-minute",
+                genre: "historical drama",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Scene unfolds at Lewis Hallam's home in 1750. Lewis, son of renowned Thomas Lewis, tells wife Sarah they're embarking on first-ever traveling theatre tour of colonies. Sarah, accomplished actor herself, has received better job opportunities in London than Lewis.",
+                themes: ["1750", "colonial theater", "Hallam family", "traveling", "colonies"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Colonial Theatre, Part Two",
+                type: "ten-minute",
+                genre: "historical drama",
+                year: "2024",
+                cast: "5 (4M/1F)",
+                description: "Hallam family and troupe embark on transformative journey aboard ship 'The Charming Sally.' Determined to bring wonders of theater to colonies, Lewis Hallam packs family and 'The Hallem Company' on board, ready to rehearse contemporary 18th-century repertoire on ship's deck.",
+                themes: ["colonial theater", "ship journey", "1750s", "The Charming Sally", "theater troupe"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Friendly Sky's",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "3 (1M/2F)",
+                description: "Thought-provoking and emotionally charged play delving into themes of love, regret, and pursuit of happiness. Invites audience to reflect on choices we make in life and potential consequences they may have on our relationships and sense of fulfillment.",
+                themes: ["airport", "high school lovers", "regret", "choices", "fulfillment"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Those Are Mine",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "3 (2M/1F)",
+                description: "Comic play following story of Sam, former corporate president who stole confidential company documents and hid them in bathroom of his home's basement. Loyal and naive wife Amy becomes aware of stolen documents and confronts Sam. Tom, brave ethical journalist, investigates.",
+                themes: ["stolen documents", "corporate", "basement bathroom", "journalism", "ethics"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "Tee-Sing",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "3M",
+                description: "Golf-themed drama exploring complexities of relationships, secrets, and rivalry among golfers. Story revolves around Rory, talented and ambitious golfer engaged to Lisa, lawyer. However, Rory harbors secret love for Cindy, wife of Phil, skilled golfer known for antics.",
+                themes: ["golf", "relationships", "secrets", "rivalry", "love triangle"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Diversity Rock",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "8-10 (6M/4F)",
+                description: "Charming play that is testament to our times. Sometimes we should listen to our youth because of their innocence. Centers around group of kids at neighborhood playground. Playground has various play equipment, and children enjoy swinging, sliding, and playing together.",
+                themes: ["children", "playground", "diversity", "innocence", "youth"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Lucky Numbers",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "8 (5M/3F)",
+                description: "Series of events in convenience store. Middle-aged woman in 40s finds herself in series of unexpected and extraordinary situations as she attempts to recall numbers for her Powerball tickets. Story unfolds with sense of urgency and danger.",
+                themes: ["convenience store", "Powerball", "lottery", "urgency", "determination"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Last Mission",
+                type: "ten-minute",
+                genre: "thriller",
+                year: "2024",
+                cast: "3 (2M/1F)",
+                description: "Gripping espionage thriller digging into complex world of spies and their hidden identities. Opens in secluded cabin in woods, where James, seemingly ordinary man, approached by Anna, who claims to be his long-lost daughter from forgotten past.",
+                themes: ["espionage", "spies", "cabin", "hidden identity", "daughter"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Masked Dating Game",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "5 (3M/2F)",
+                description: "Entertaining play featuring unique Speed Dating event set amidst pandemic. Lighthearted production offers delightful glimpse into how singles can engage in safe and enjoyable speed dating experiences during challenging times. Showcases creativity and adaptability of participants.",
+                themes: ["pandemic", "speed dating", "masks", "safety", "creativity"],
+                availability: "Available on New Play Exchange",
+                recommendation: "4 recommendations"
+            },
+            {
+                title: "Brothers",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "2M",
+                description: "Explores themes of sibling dynamics, envy, forgiveness, and enduring power of familial love. Delves into complexities of relationships and impact of individual perspectives on personal experiences. Through emotional journey of Sam and Ben, emphasizes importance of cherishing family bonds.",
+                themes: ["siblings", "envy", "forgiveness", "family love", "perspectives"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Genesis in a Red Pick-Up Truck",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "2 (1M/1F)",
+                description: "Sally and Bob are seasoned senior couple who have embarked on lifelong journey together. Seated in front seat of vibrant red pickup truck, they relish simple yet cherished moment, sharing fast-food lunch while gazing upon serene beauty of nearby lake discussing Genesis.",
+                themes: ["seniors", "pickup truck", "Genesis", "lake", "fast food"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "The Magical Coins",
+                type: "ten-minute",
+                genre: "drama",
+                year: "2024",
+                cast: "3 (2M)",
+                description: "Heartwarming story in cozy kitchen filled with warmth and love. Follows curious journey of Tommy, young boy, and wise grandfather, known affectionately as Papa. One sunny morning, Tommy drawn to enchanting sound of coins being sorted on kitchen table.",
+                themes: ["grandfather", "coins", "kitchen", "storytelling", "family"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Rusty Hand Truck",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "3M",
+                description: "Captivating play set on neighborhood street, unfolds as neighbors converse about Tom's Rusty Hand Truck. Eclectic cast includes Jamie, bearded and unhurried Canadian residing in Michigan, and Peter, upbeat and optimistic individual hailing from Boston.",
+                themes: ["neighbors", "hand truck", "conversation", "neighborhood", "personalities"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Trusty Rusty Hand Truck",
+                type: "ten-minute",
+                genre: "comedy",
+                year: "2024",
+                cast: "3M",
+                description: "Sequel to 'The Rusty Hand Truck,' reunites audiences with Tom, friendly heavyweight man from Rhode Island, and introduces new neighbors. Joining lively cast are Tim, free-spirited 60-something hippie from Michigan, and Rex, bearded robust man from Kansas City.",
+                themes: ["sequel", "neighbors", "hand truck", "hippie", "Rhode Island"],
+                availability: "Available on New Play Exchange"
+            },
+
+            // MONOLOGUES
+            {
+                title: "Monologue - A Rainy Night in Hollywood (Rita)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Rita's Monologue about being a woman in 1940s Hollywood. Explores the challenges, pressures, and realities of female stardom during the golden age of cinema.",
+                themes: ["1940s Hollywood", "women in film", "stardom", "challenges", "golden age"],
+                availability: "Available on New Play Exchange",
+                recommendation: "7 recommendations"
+            },
+            {
+                title: "Monologue - A Rainy Night in Hollywood (George)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1M",
+                description: "George's Monologue about landing on the beach on D-Day. Powerful piece exploring the memories and trauma of a WWII veteran's experience during the historic invasion.",
+                themes: ["D-Day", "WWII", "veteran", "trauma", "memories"],
+                availability: "Available on New Play Exchange",
+                recommendation: "3 recommendations"
+            },
+            {
+                title: "Monologue - Art Therapy (Flo)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Late 40s, well-read bookstore clerk and weekend podcaster. She is discovering herself after spending her life with self-doubt and is quick to offer advice.",
+                themes: ["self-discovery", "bookstore", "podcaster", "advice", "late 40s"],
+                availability: "Available on New Play Exchange",
+                recommendation: "4 recommendations"
+            },
+            {
+                title: "Monologue - All Aboard (Sam)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Sam's monologue exploring themes of identity, acceptance, and personal growth from the perspective of a young transgender individual.",
+                themes: ["transgender", "identity", "acceptance", "growth", "youth"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "Monologue - Watch Your Pronouns (Sarah)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Sarah's monologue dealing with family relationships and understanding in the context of LGBTQ family members and changing social dynamics.",
+                themes: ["LGBTQ", "family", "understanding", "pronouns", "change"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Monologue - The Lesson (Junior)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1M",
+                description: "Fine African American man in his late twenties and six feet tall. Monologue exploring themes of civil rights, identity, and social justice set in 1970s South Carolina.",
+                themes: ["African American", "civil rights", "1970s", "South Carolina", "identity"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Monologue - The Lesson (Tommy)",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1M",
+                description: "Caucasian male, early twenties, long blonde hair - Hippy type. Monologue exploring social consciousness and changing attitudes during the civil rights era.",
+                themes: ["hippie", "civil rights", "1970s", "social change", "youth"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Book of Monologues",
+                type: "monologue",
+                genre: "various",
+                year: "2000-2024",
+                cast: "1",
+                description: "Vibrant collection of dramatic pieces crafted for performers across generations. Spans four main categories - Senior Men's, Senior Women's, Young Actor's, and Comedy monologues - each exploring human experience through different lenses. From tender reflections of aging to awkward mishaps of modern dating.",
+                themes: ["collection", "all ages", "human experience", "comedy", "drama"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Lost and Found",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Alex is a project manager who has been preparing for months to lead an important corporate meeting. Set in a chaotic, slightly cluttered living room as the character searches frantically while speaking on the phone.",
+                themes: ["corporate", "preparation", "chaos", "searching", "phone call"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Reservations",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Jamie has a deep-seated phobia of public restrooms, stemming from a childhood incident. Today, they must face their fear. Set in a bustling city mall near the entrance of a crowded public restroom.",
+                themes: ["phobia", "public restrooms", "childhood trauma", "fear", "courage"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Quirky Pitch",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Devin is a whimsical entrepreneur pitching a hilariously impractical invention that solves a problem no one has. A comedic exploration of misguided innovation and entrepreneurial enthusiasm.",
+                themes: ["entrepreneur", "invention", "impractical", "pitch", "comedy"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Herbivore's Dilemma",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Sam, a dedicated vegan, finds themselves at a typical suburban backyard barbecue party. Standing awkwardly by the salad table with a lone veggie burger, they navigate the social challenges of maintaining their beliefs in an unsympathetic environment.",
+                themes: ["vegan", "barbecue", "social pressure", "beliefs", "isolation"],
+                availability: "Available on New Play Exchange",
+                recommendation: "3 recommendations"
+            },
+            {
+                title: "The Misplaced Confession",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Jamie accidentally confesses to embarrassing misunderstandings instead of their secret. A comedic piece about miscommunication and the gap between intention and reality.",
+                themes: ["confession", "misunderstanding", "secrets", "miscommunication", "embarrassment"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Dream Unfulfilled",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Lucas is a deluded actor who believes they're perpetually auditioning, delivering overly dramatic lines in everyday situations. Explores the thin line between passion and delusion in artistic pursuits.",
+                themes: ["actor", "delusion", "audition", "dramatic", "artistic pursuit"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Encounter at Midnight",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Alex believes they've had a ghostly visitation, but it is actually a series of coincidental and clumsy accidents. Explores themes of perception, supernatural beliefs, and reality.",
+                themes: ["ghost", "coincidence", "accidents", "supernatural", "perception"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Homecoming Truths",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Riley returns to their hometown for a festival, only to unwittingly become the festival's clown due to a series of mishaps. A piece about unintended consequences and finding humor in embarrassment.",
+                themes: ["hometown", "festival", "mishaps", "clown", "embarrassment"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Date",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1M",
+                description: "Max is sitting alone at a small, dimly lit table in a casual restaurant after experiencing a series of misfortunes on what was supposed to be a promising first date. From showing up at the wrong restaurant to unexpected disasters.",
+                themes: ["first date", "misfortune", "restaurant", "disaster", "loneliness"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Over-the-Top Apology",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1F",
+                description: "Samantha is a celebrity trying to make a public apology but keeps getting sidetracked by their ridiculous diva demands. A satirical look at celebrity culture and performative apologies.",
+                themes: ["celebrity", "apology", "diva", "public", "satirical"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Mad Scientist",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Max is a scatterbrained inventor who creates something that's supposed to change the world but makes a lot of noise and smoke instead. A piece about ambition versus reality in scientific pursuits.",
+                themes: ["inventor", "scatterbrained", "noise", "smoke", "ambition"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Faucet Fiasco",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Amelia's bathroom is in disarray after her attempt to fix a leaky faucet, inspired by online tutorials, spirals into a series of unfortunate events culminating in a flooded bathroom. About self-sufficiency and DIY disasters.",
+                themes: ["DIY", "faucet", "flooding", "self-sufficiency", "tutorials"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Goodbye",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Morgan sits in a modern, newly renovated coffee shop that has lost its cozy, intimate vibe. As a longtime patron, they discover their beloved neighborhood coffee shop has been transformed into a sleek, industrial space.",
+                themes: ["coffee shop", "change", "renovation", "nostalgia", "gentrification"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Confessions",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Taylor sits beside a small, somewhat wilting houseplant, speaking to it like an old friend. After a particularly stressful month, they realize they've neglected their houseplant, a gift from a dear friend, and use it as a confidant.",
+                themes: ["houseplant", "confession", "stress", "friendship", "neglect"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Survivor's Tale",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Casey gives a dramatic recount of surviving a minor mishap, like a Wi-Fi outage, as if it were a major disaster. A satirical piece about modern dependencies and exaggerated responses to minor inconveniences.",
+                themes: ["Wi-Fi outage", "exaggeration", "modern life", "survivor", "satirical"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Spy Who Knew Too Little",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Parker is a wannabe spy who thinks they're in a high-stakes espionage thriller, but they're just misinterpreting everyday events. A comedic exploration of paranoia and misperception.",
+                themes: ["spy", "paranoia", "misinterpretation", "thriller", "everyday events"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Reluctant Heir",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Julian faces the unexpected responsibility of inheritance and the complications that come with unwanted wealth or property. A piece about reluctant responsibility and family obligations.",
+                themes: ["inheritance", "reluctant", "responsibility", "wealth", "family"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Artist's Midnight Crisis",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Theo experiences a creative crisis in the middle of the night, questioning their artistic purpose and direction. A deep dive into the artist's psyche and creative struggle.",
+                themes: ["artist", "midnight", "crisis", "creative", "purpose"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "Echoes of the Battlefield",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1M",
+                description: "Michael deals with the psychological aftermath of military service, exploring themes of PTSD, memory, and the challenge of civilian reintegration.",
+                themes: ["military", "PTSD", "battlefield", "veteran", "reintegration"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Spirit of Awakening",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Elena experiences a spiritual awakening or moment of profound personal realization, exploring themes of enlightenment and personal transformation.",
+                themes: ["spiritual", "awakening", "enlightenment", "transformation", "realization"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Visionary Dilemma",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Simone faces the challenge of pursuing a revolutionary idea while dealing with skepticism and practical obstacles. About vision versus reality.",
+                themes: ["visionary", "revolution", "skepticism", "obstacles", "innovation"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "The Outcast's Regrets",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1M",
+                description: "Lucas reflects on the choices that led to his social isolation and the regrets that haunt him. A piece about consequences, isolation, and redemption.",
+                themes: ["outcast", "regret", "isolation", "choices", "redemption"],
+                availability: "Available on New Play Exchange"
+            },
+            {
+                title: "And Misadventures",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Erica keeps receiving calls for a mysterious 'Mr. Thompson.' Despite repeatedly explaining the mix-up, the calls continue, leading her to concoct increasingly elaborate explanations for the persistent wrong numbers.",
+                themes: ["wrong numbers", "Mr. Thompson", "misadventures", "phone calls", "confusion"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "Unexpected Heritage",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Morgan discovers they are the long-lost descendant of a minor royal family in a very insignificant country. A piece about unexpected identity and meaningless prestige.",
+                themes: ["heritage", "royal family", "descendant", "insignificant", "identity"],
+                availability: "Available on New Play Exchange",
+                recommendation: "2 recommendations"
+            },
+            {
+                title: "The Comedy of Forgiveness",
+                type: "monologue",
+                genre: "comedy",
+                year: "2024",
+                cast: "1",
+                description: "Avery tries to forgive someone who accidentally donated their favorite ugly sweater to charity. A comedic look at attachment, forgiveness, and the things we hold dear.",
+                themes: ["forgiveness", "ugly sweater", "charity", "attachment", "accidents"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Last Goodbye",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1F",
+                description: "Evelyn is a hypochondriac who bids farewell to everyone for minor surgery, treating it as though they're on their deathbed. About anxiety, melodrama, and fear of medical procedures.",
+                themes: ["hypochondriac", "surgery", "farewell", "deathbed", "anxiety"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+            {
+                title: "The Weight of Choices",
+                type: "monologue",
+                genre: "drama",
+                year: "2024",
+                cast: "1",
+                description: "Jordan agonizes over a trivial choice, like choosing the perfect hat for a party, as if the world's fate depends on it. About anxiety, perfectionism, and the paralysis of choice.",
+                themes: ["choices", "anxiety", "perfectionism", "hat", "party"],
+                availability: "Available on New Play Exchange",
+                recommendation: "1 recommendation"
+            },
+
+            // RADIO/SCREEN SCRIPTS
+            {
+                title: "Gulfshore Keys",
+                type: "radio-script",
+                genre: "mystery",
+                year: "2024",
+                cast: "15",
+                description: "In Venice, Florida, wealthy Gerald Coolie's death leaves his valuable real estate up for auction. Allen Cunningham hires bandits Mitch and Wobbles to kill Fitzsimmons, the likely highest bidder. However, they mistakenly murder Fran Simmons before realizing their error.",
+                themes: ["Venice Florida", "real estate", "murder", "auction", "bandits"],
+                availability: "Available on New Play Exchange"
+            }
+        ];
+
+        // DOM elements
+        const playGrid = document.getElementById('playGrid');
+        const playSearch = document.getElementById('playSearch');
+        const navbar = document.getElementById('navbar');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                hideLoading();
+                renderPlays(plays);
+                setupEventListeners();
+                setupScrollAnimations();
+            }, 2000);
+        });
+
+        // Show/hide loading animation
+        function hideLoading() {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+
+        // Render plays in NPX order
+        function renderPlays(playsToRender) {
+            playGrid.innerHTML = playsToRender.map(play => `
+                <div class="play-card fade-in" data-genre="${play.genre}" data-type="${play.type}">
+                    <div class="play-title">${play.title}</div>
+                    <div class="play-meta">
+                        <span class="play-tag">${play.type}</span>
+                        <span class="play-tag">${play.genre}</span>
+                        <span class="play-tag">${play.cast}</span>
+                        <span class="play-tag">${play.year}</span>
+                    </div>
+                    <div class="play-description">${play.description}</div>
+                    ${play.warning ? `<div class="play-warning">⚠️ ${play.warning}</div>` : ''}
+                    <div class="play-actions">
+                        <a href="https://newplayexchange.org/users/16892/tom-erb" target="_blank" class="play-button primary">View on NPX</a>
+                        <button class="play-button secondary" onclick="showPlayDetails('${play.title}')">More Details</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Re-trigger animations for newly rendered content
+            setupScrollAnimations();
+        }
+
+        // Filter plays
+        function filterPlays(filter) {
+            // Update active tab
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter plays
+            let filteredPlays = plays;
+            if (filter !== 'all') {
+                filteredPlays = plays.filter(play => 
+                    play.type === filter || 
+                    (filter === 'musical' && play.genre === 'musical')
+                );
+            }
+
+            renderPlays(filteredPlays);
+        }
+
+        // Search plays
+        function searchPlays() {
+            const searchTerm = playSearch.value.toLowerCase();
+            const filteredPlays = plays.filter(play => 
+                play.title.toLowerCase().includes(searchTerm) ||
+                play.description.toLowerCase().includes(searchTerm) ||
+                play.themes.some(theme => theme.toLowerCase().includes(searchTerm)) ||
+                play.genre.toLowerCase().includes(searchTerm) ||
+                play.cast.toLowerCase().includes(searchTerm)
+            );
+            renderPlays(filteredPlays);
+        }
+
+        // Show play details
+        function showPlayDetails(title) {
+            const play = plays.find(p => p.title === title);
+            if (play) {
+                let details = `${play.title}\n\n${play.description}\n\nCast: ${play.cast}\nGenre: ${play.genre}\nYear: ${play.year}`;
+                if (play.themes) {
+                    details += `\nThemes: ${play.themes.join(', ')}`;
+                }
+                if (play.warning) {
+                    details += `\n\nWarning: ${play.warning}`;
+                }
+                details += `\n\nAvailable on New Play Exchange for licensing and production.`;
+                alert(details);
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Search on Enter key
+            playSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchPlays();
+                }
+            });
+
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Setup scroll animations
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Background rotation for hero section (optional enhancement)
+        function rotateHeroBackground() {
+            const backgrounds = [
+                "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%23667eea%22 width=%221200%22 height=%22800%22/><text x=%22600%22 y=%22400%22 font-family=%22serif%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22>🎭 THEATER 🎬</text></svg>')",
+                "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%233498db%22 width=%221200%22 height=%22800%22/><text x=%22600%22 y=%22400%22 font-family=%22serif%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22>🎪 COMMUNITY 🎨</text></svg>')",
+                "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%231e3c72%22 width=%221200%22 height=%22800%22/><text x=%22600%22 y=%22400%22 font-family=%22serif%22 font-size=%2260%22 fill=%22white%22 text-anchor=%22middle%22 dy=%22.3em%22>📝 PLAYWRIGHT ✍️</text></svg>')"
+            ];
+            
+            let currentBg = 0;
+            const heroBackground = document.querySelector('.hero-background');
+            
+            setInterval(() => {
+                currentBg = (currentBg + 1) % backgrounds.length;
+                heroBackground.style.backgroundImage = backgrounds[currentBg];
+            }, 5000);
+        }
+
+        // Initialize background rotation
+        setTimeout(rotateHeroBackground, 3000);
+    </script>
+</body>
+</html>
